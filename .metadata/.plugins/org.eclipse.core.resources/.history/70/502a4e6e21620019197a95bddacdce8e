@@ -1,0 +1,102 @@
+package lab2;
+
+import java.util.Arrays;
+
+public class SortingAlgorithms {
+    /* array sizes of 1,000:
+     * Total execution time for selectionSort: 8
+     * Total execution time for Arrays.sort: 1
+     **********************************************
+     * array sizes of 10,000:
+     * Total execution time for selectionSort: 221
+     * Total execution time for Arrays.sort: 6
+     **********************************************
+     * array sizes of 100,000.
+     * Total execution time for selectionSort: 19819
+     * Total execution time for Arrays.sort: 17
+     */
+    private final static int size = 1000; //constant to control the size of the array.
+    private static int [] ArrayA; // second array of type int[]
+    private static int [] ArrayB; // first array of type int[]
+    
+
+
+    public static void main(String args[]) {
+            
+        ArrayA = new int[size]; // create the first Array with the sloths in the int variable size.
+        ArrayB = new int[size]; // create the second Array with the sloths in the int variable size.
+       
+        for (int index = 0; index < size; index++) { 
+            /*
+             * create a loop that executes according to the size of the array.
+             */ 
+            ArrayA[index] = (int)(Integer.MAX_VALUE * Math.random()); 
+            ArrayB[index] = (int)(Integer.MAX_VALUE * Math.random()); 
+             /* generate random integers with a wide range of sizes 
+              * each execution through the loop
+              * stores it in the array at the
+              * position index of the for loop
+              */                                             
+        }
+        final long startTime = System.currentTimeMillis(); 
+        selectionSort(ArrayA); // call the selectionSort method to sort ArrayA.
+        final long endTime = System.currentTimeMillis();
+      //  System.out.println("Total execution time for selectionSort.Sort: " + (endTime - startTime));
+        
+        
+        final long startTime2 = System.currentTimeMillis();
+        Arrays.sort(ArrayB);
+        final long runTime = System.currentTimeMillis();
+       // System.out.println("Total execution time for Arrays.sort: " + (runTime - startTime2));
+        
+     
+        
+       System.out.println();
+       
+        printArray(); //display the result
+        System.out.println("Total execution time for selectionSort: " + (endTime - startTime));
+        System.out.println("Total execution time for Arrays.sort: " + (runTime - startTime2));
+    }
+
+    public static void printArray() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(ArrayA[i] + "   ");  
+            System.out.println(ArrayB[i]);
+          
+        }
+    } 
+
+    static void selectionSort(int[] A) {
+        // Sort A into increasing order, using selection sort
+        for (int lastPlace = A.length-1; lastPlace > 0; lastPlace--) {
+            /* Find the largest item among A[0], A[1], ...,
+            A[lastPlace], and move it into position lastPlace
+            by swapping it with the number that is currently
+             in position lastPlace. 
+             */
+        int maxLoc = 0; // Location of largest item seen so far.
+        
+        for (int j = 1; j <= lastPlace; j++) { if (A[j] > A[maxLoc]) {
+            
+        // Since A[j] is bigger than the maximum we’ve seen // so far, j is the new location of the maximum value
+        // we’ve seen so far.
+            
+            maxLoc = j;
+        } 
+        
+        
+        int temp = A[maxLoc]; // Swap largest item with A[lastPlace].
+        A[maxLoc] = A[lastPlace]; 
+        A[lastPlace] = temp;
+        } //end of for loop 
+        }
+    
+    
+    
+    }
+
+
+    
+
+    }
+

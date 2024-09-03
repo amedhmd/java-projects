@@ -1,0 +1,38 @@
+package icecream;
+
+public class icecreamsale {
+
+	public static void main(String[] args) {
+// First open the file in a try catch block to avoid errors.
+        
+        try {
+             TextIO.readFile("icecream.dat"); //read the file 
+        } //END of try
+        
+        catch (IllegalArgumentException e) {
+            System.out.println("Can't open file \"icecream.dat\" !"); //message to the user
+            System.exit(1);  // Exit the program.
+            
+    } // END of catch
+        
+        // Initialising variables.
+        
+        int totalIceCreamSales = 0;
+        int strawberryIceCreamSales = 0;
+
+        // A while loop to search the file until there are no more lines.
+        while (!TextIO.eof()) {
+            String readLines = TextIO.getln();  //create a new string variable holding all the lines in the file - one by one.
+            totalIceCreamSales++; // Increase this variable by one in every iteration of the while loop.
+
+            if (readLines.equals("Strawberry")) { //if the line is strawberry, run this.
+                 strawberryIceCreamSales++; // count the number of strawberry cones.
+            } //END of if
+        } //END of while
+        
+        System.out.println("Icecream cone sales : " + totalIceCreamSales);
+        System.out.println("Strawberry icecream sales : " + strawberryIceCreamSales);
+        System.out.println("Strawberry icecream is " + ((double) strawberryIceCreamSales/totalIceCreamSales*100) + "%%" + " of total sales");
+	}
+
+}

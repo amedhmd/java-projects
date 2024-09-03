@@ -1,0 +1,10 @@
+package searchandsort;
+
+public class SetCalculator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
